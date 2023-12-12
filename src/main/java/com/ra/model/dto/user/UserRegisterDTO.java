@@ -1,31 +1,26 @@
-package com.ra.model.dto.response;
+package com.ra.model.dto.user;
 
-public class UserResponseDTO {
+public class UserRegisterDTO {
     private String userName;
-    private String userEmail;
     private String password;
+    private String userEmail;
     private String image;
     private String phoneNumber;
     private String Address;
     private boolean role;
 
-    public UserResponseDTO() {
+    public UserRegisterDTO() {
     }
+
+
 
     public String getUserName() {
         return userName;
     }
 
+
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
     }
 
     public String getPassword() {
@@ -34,6 +29,14 @@ public class UserResponseDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getImage() {

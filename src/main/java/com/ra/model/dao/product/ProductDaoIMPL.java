@@ -87,8 +87,6 @@ public class ProductDaoIMPL implements ProductDAO{
                 callableStatement.setInt(6,product.getCategory().getCategoryId());
                 check = callableStatement.executeUpdate();
         }else {
-
-
                 CallableStatement callableStatement = connection.prepareCall("{CALL PROC_UPDATE_PRODUCT(?,?,?,?,?,?,?)}");
                 callableStatement.setInt(1,product.getProductId());
                 callableStatement.setString(2,product.getProductName());

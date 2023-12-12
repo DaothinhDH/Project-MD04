@@ -1,7 +1,8 @@
 package com.ra.model.service.user;
 
 import com.ra.model.dao.user.UserDAO;
-import com.ra.model.dto.response.UserResponseDTO;
+import com.ra.model.dto.user.UserRegisterDTO;
+import com.ra.model.dto.user.response.UserResponseDTO;
 import com.ra.model.entity.User;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,22 +34,36 @@ public class UserServiceIMPL implements UserServive{
     }
 
     @Override
-    public User checkLogin(String email, String password) {
-        return userDAO.checkLogin(email, password);
+    public UserResponseDTO checkLogin(String email, String password) {
+        User user = userDAO.findByEmail(email);
+        if (user != null) {
+            if (BCrypt.checkpw(password,user.getPassword())){
+                UserResponseDTO userResponseDTO = new UserResponseDTO();
+                userResponseDTO.setUserId(user.getUserId());
+                userResponseDTO.setUserName(user.getUserName());
+                userResponseDTO.setUserEmail(user.getUserEmail());
+                userResponseDTO.setImage(user.getImage());
+                userResponseDTO.setPhoneNumber(user.getPhoneNumber());
+                userResponseDTO.setAddress(user.getAddress());
+                userResponseDTO.setRole(user.isRole());
+                return userResponseDTO;
+            }
+        }
+        return null;
     }
 
     @Override
-    public boolean register(UserResponseDTO userResponseDTO) {
+    public boolean register(UserRegisterDTO userRegisterDTO) {
         User user = new User();
-        user.setUserName(userResponseDTO.getUserName());
-        user.setPassword(userResponseDTO.getPassword());
-        user.setUserEmail(userResponseDTO.getUserEmail());
-        user.setPhoneNumber(userResponseDTO.getPhoneNumber());
-        user.setAddress(userResponseDTO.getAddress());
-        user.setImage(userResponseDTO.getImage());
-        user.setRole(userResponseDTO.isRole());
+        user.setUserName(userRegisterDTO.getUserName());
+        user.setPassword(userRegisterDTO.getPassword());
+        user.setUserEmail(userRegisterDTO.getUserEmail());
+        user.setPhoneNumber(userRegisterDTO.getPhoneNumber());
+        user.setAddress(userRegisterDTO.getAddress());
+        user.setImage(userRegisterDTO.getImage());
+        user.setRole(userRegisterDTO.isRole());
         //
-        String hasPassword = BCrypt.hashpw(userResponseDTO.getPassword(),BCrypt.gensalt(12));
+        String hasPassword = BCrypt.hashpw(userRegisterDTO.getPassword(),BCrypt.gensalt(12));
         user.setPassword(hasPassword);
         return userDAO.saveOrUpdate(user);
     }

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<th:block th:insert="admin/layouts/homeAdmin/head.html"></th:block>
+
+
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <!--sidebar-->
+    <th:block th:insert="admin/layouts/homeAdmin/sidebar.html"></th:block>
+
+    <!--navbar-->
+    <th:block th:insert="admin/layouts/homeAdmin/navbar.html"></th:block>
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form th:object="${product_add}" method="post" th:action="@{/admin/create-product}">
+                                <div class="form-group">
+                                    <label>Tên sản phẩm</label>
+                                    <input type="text" class="form-control" th:field="*{productName}"
+                                           placeholder="Enter Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả</label>
+                                    <input type="text" class="form-control" th:field="*{description}"
+                                           placeholder="Description">
+                                </div>
+                                <div class="form-group">
+                                    <label>Gía tiền</label>
+                                    <input type="number" class="form-control" th:field="*{price}" placeholder="Price">
+                                </div>
+                                <div class="form-group">
+                                    <label>Số lượng</label>
+                                    <input type="number" class="form-control" th:field="*{stock}" placeholder="Stock">
+                                </div>
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    <select class="form-control" th:field="*{status}">
+                                        <option value="true">Hiện</option>
+                                        <option value="false">Ẩn</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Danh mục</label>
+                                    <select class="form-control" th:field="*{category.categoryId}">
+                                        <option th:each="item:${category}" th:value="${item.categoryId}"
+                                                th:text="${item.categoryName}"></option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a th:href="@{/admin/product}" class="btn bg-danger">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Wrapper End-->
+<!--footer-->
+<th:block th:insert="admin/layouts/homeAdmin/footer.html"></th:block>
+
+<!--Script-->
+<th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
+
+</body>
+</html>

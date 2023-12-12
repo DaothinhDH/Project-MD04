@@ -1,6 +1,7 @@
 package com.ra.controller.user;
 
-import com.ra.model.dto.response.UserResponseDTO;
+import com.ra.model.dto.user.UserRegisterDTO;
+import com.ra.model.dto.user.response.UserResponseDTO;
 import com.ra.model.entity.User;
 import com.ra.model.service.user.UserServive;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +26,13 @@ public class LoginOrRegisterController {
     }
     @PostMapping("/login")
     public String handleLogin(@ModelAttribute("user") User user,Model model){
-        User authent = userService.checkLogin(user.getUserEmail(),user.getPassword());
+        UserResponseDTO userResponseDTO = userService.checkLogin(user.getUserEmail(),user.getPassword());
 
-        if (authent != null && authent.isRole()) {
-
-            session.setAttribute("user",authent);
+        if (userResponseDTO != null && userResponseDTO.isRole() == true) {
+            session.setAttribute("user",userResponseDTO);
             return "redirect:/";
         } else {
-            return "redirect:/login";
+            return "redirect:/";
         }
     }
     @GetMapping("/logout")
@@ -43,20 +43,35 @@ public class LoginOrRegisterController {
 
     @GetMapping("/register")
     public String register(Model model){
-        UserResponseDTO user = new UserResponseDTO();
+        UserRegisterDTO user = new UserRegisterDTO();
         model.addAttribute("user",user);
         return "users/login/login";
     }
 
     @PostMapping("/register")
-    public String handleRegister(@ModelAttribute("user") UserResponseDTO user) {
+    public String handleRegister(@ModelAttribute("user") UserRegisterDTO user) {
         if (userService.register(user)) {
             return "redirect:/";
         }
         return "redirect:/register";
     }
 
-
-
+    @GetMapping("/login-admin")
+    public String loginAdmin(){
+        return "admin/loginAdmin";
+    }
+    @PostMapping("/handle-login")
+    public String handleLogin(@RequestParam("email") String email ,@RequestParam("password") String password){
+        UserResponseDTO userResponseDTO = userService.checkLogin(email,password);
+        if (userResponseDTO != null){
+            if (!userResponseDTO.isRole()){
+                session.setAttribute("admin",userResponseDTO);
+                return "redirect:/admin/";
+            }
+        }
+        System.out.println(email);
+        System.out.println(password);
+        return "redirect:/login-admin";
+    }
 
 }
