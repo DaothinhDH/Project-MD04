@@ -1,10 +1,8 @@
 package com.ra.model.dao.category;
 
-import com.ra.model.entity.Category.Category;
+import com.ra.model.entity.Category;
 import com.ra.utill.ConnectionDatabase;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;

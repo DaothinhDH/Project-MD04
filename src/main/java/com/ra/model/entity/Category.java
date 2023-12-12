@@ -1,4 +1,4 @@
-package com.ra.model.entity.Category;
+package com.ra.model.entity;
 
 public class Category {
     private int categoryId;

@@ -30,36 +30,39 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Mã Sản phẩm</th>
-                                        <th>Tên Sản Phẩm</th>
-                                        <th>Mô tả</th>
-                                        <th>Giá tiền</th>
-                                        <th>Số Lượng</th>
+                                        <th style="width: 150px">Mã Người Dùng</th>
+                                        <th>Tên Người Dùng</th>
+                                        <th>Email</th>
+                                        <th>Địa Chỉ</th>
                                         <th>Trạng Thái</th>
-                                        <th style="width: 150px;" class="text-right"></th>
+                                        <th>Role</th>
+                                        <th style="width: 150px" class="text-right"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="item:${product}">
-                                        <td th:text="${item.getProductId()}"></td>
-                                        <td th:text="${item.getProductName()}"></td>
-                                        <td th:text="${item.getDescription()}"></td>
-                                        <td th:text="${item.getPrice()}"></td>
-                                        <td th:text="${item.getStock()}"></td>
-                                        <td th:text="${item.isStatus()}"></td>
+                                    <tr th:each="item: ${users}">
+                                        <td th:text="${item.getUserId()}"></td>
+                                        <td th:text="${item.getUserName()}"></td>
+                                        <td th:text="${item.getUserEmail()}"></td>
+                                        <td th:text="${item.getAddress()}"></td>
+                                        <td th:text="${item.isUserStatus()}"></td>
+                                        <td th:text="${item.isRole()}"></td>
 
                                         <td class="text-center">
                                             <button class="btn btn-primary">Sửa</button>
                                             <button class="btn btn-danger">Xóa</button>
                                         </td>
                                     </tr>
+
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
+                                        <th>Mã Người Dùng</th>
+                                        <th>Tên Người Dùng</th>
+                                        <th>Email</th>
+                                        <th>Địa Chỉ</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Role</th>
 
                                         <th class="text-right"></th>
                                     </tr>

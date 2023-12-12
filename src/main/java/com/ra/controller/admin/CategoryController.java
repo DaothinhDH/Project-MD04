@@ -1,5 +1,5 @@
 package com.ra.controller.admin;
-import com.ra.model.entity.Category.Category;
+import com.ra.model.entity.Category;
 import com.ra.model.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
