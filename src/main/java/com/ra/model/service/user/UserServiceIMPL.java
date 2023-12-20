@@ -67,4 +67,9 @@ public class UserServiceIMPL implements UserServive{
         user.setPassword(hasPassword);
         return userDAO.saveOrUpdate(user);
     }
+
+    @Override
+    public boolean userUpdateStatus(Integer id, boolean status) {
+        return userDAO.userUpdateStatus(id,status);
+    }
 }

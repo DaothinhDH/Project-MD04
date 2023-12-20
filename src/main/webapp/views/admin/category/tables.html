@@ -48,7 +48,7 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
+                                            <a type="button" class="btn btn-primary" th:href="@{/admin/edit-category/{id}(id=${item.getCategoryId()})}">Sửa</a>
                                             <button class="btn btn-danger">Xóa</button>
                                         </td>
                                     </tr>
@@ -56,12 +56,11 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-
-                                        <th class="text-right"></th>
+                                        <th>Mã Danh Mục</th>
+                                        <th>Tên Danh Mục</th>
+                                        <th>Ghi Chú</th>
+                                        <th>Trạng Thái</th>
+                                        <th></th>
                                     </tr>
                                     </tfoot>
                                 </table>

@@ -8,4 +8,5 @@ public interface ProductService {
     List<Product> findAll();
     Product findById(Integer id);
     boolean saveOrUpdate(Product product);
+    List<Product> findByIdCategory(Integer categoryId);
 }

@@ -34,7 +34,6 @@ public class CategoryDaoIMPL implements CategoryDAO {
         }finally {
             ConnectionDatabase.closeConnection(connection);
         }
-
         return categoryList;
     }
 
@@ -72,7 +71,6 @@ public class CategoryDaoIMPL implements CategoryDAO {
                 callableStatement.setString(1,category.getCategoryName());
                 callableStatement.setString(2,category.getDescription());
                 check = callableStatement.executeUpdate();
-
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

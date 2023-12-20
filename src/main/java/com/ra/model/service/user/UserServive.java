@@ -13,4 +13,5 @@ public interface UserServive {
     User findByEmail(String email);
     UserResponseDTO checkLogin(String email, String password);
     boolean register(UserRegisterDTO userResponseDTO);
+    boolean userUpdateStatus(Integer id,boolean status);
 }

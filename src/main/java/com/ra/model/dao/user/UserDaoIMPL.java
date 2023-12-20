@@ -54,7 +54,7 @@ public class UserDaoIMPL implements UserDAO{
             ResultSet resultSet = callableStatement.executeQuery();
             if (resultSet.next()) {
                 user.setUserId(resultSet.getInt("id"));
-                user.setUserName(resultSet.getString("name"));
+                user.setUserName(resultSet.getString("user_name"));
                 user.setUserEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
                 user.setImage(resultSet.getString("image"));
@@ -143,5 +143,20 @@ public class UserDaoIMPL implements UserDAO{
             return user;
         }
         return null;
+    }
+
+    @Override
+    public boolean userUpdateStatus(Integer id, boolean status) {
+        Connection connection = null;
+        connection = ConnectionDatabase.openConnection();
+        try {
+            CallableStatement callableStatement = connection.prepareCall("CALL PROC_UPDATE_STATUS_USER(?,?)");
+            callableStatement.setInt(1, id);
+            callableStatement.setBoolean(2, status);
+            int check = callableStatement.executeUpdate();
+            return check > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

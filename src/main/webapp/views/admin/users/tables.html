@@ -30,10 +30,9 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width: 150px">Mã Người Dùng</th>
+                                        <th style="width: 50px">Mã Người Dùng</th>
                                         <th>Tên Người Dùng</th>
                                         <th>Email</th>
-                                        <th>Địa Chỉ</th>
                                         <th>Trạng Thái</th>
                                         <th>Role</th>
                                         <th style="width: 150px" class="text-right"></th>
@@ -44,13 +43,19 @@
                                         <td th:text="${item.getUserId()}"></td>
                                         <td th:text="${item.getUserName()}"></td>
                                         <td th:text="${item.getUserEmail()}"></td>
-                                        <td th:text="${item.getAddress()}"></td>
-                                        <td th:text="${item.isUserStatus()}"></td>
+                                        <td>
+                                            <span class="label"
+                                                  th:classappend="${item.isUserStatus() ? 'badge text-green':'badge text-warning'}"
+                                                  th:text="${item.isUserStatus()?'Mở':'Khóa'}"></span>
+                                        </td>
+
                                         <td th:text="${item.isRole()}"></td>
 
                                         <td class="text-center">
-                                            <button class="btn btn-primary">Sửa</button>
-                                            <button class="btn btn-danger">Xóa</button>
+                                            <a th:href="@{'/admin/user/' + ${item.userId} + '?status=1'}"
+                                               class="btn btn-primary">Open</a>
+                                            <a th:href="@{'/admin/user/' + ${item.userId} + '?status=0'}"
+                                               class="btn btn-warning">Block</a>
                                         </td>
                                     </tr>
 

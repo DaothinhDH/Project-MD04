@@ -6,6 +6,7 @@ package com.ra.model.entity;
 public class Product {
     private int productId;
     private String productName;
+    private String image;
     private String description;
     private float price;
     private int stock;
@@ -15,9 +16,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, String productName, String description, float price, int stock, boolean status, Category category) {
+    public Product(int productId, String productName, String image, String description, float price, int stock, boolean status, Category category) {
         this.productId = productId;
         this.productName = productName;
+        this.image = image;
         this.description = description;
         this.price = price;
         this.stock = stock;
@@ -35,6 +37,14 @@ public class Product {
 
     public String getProductName() {
         return productName;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public void setProductName(String productName) {

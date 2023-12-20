@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<th:block th:insert="admin/layouts/homeAdmin/head.html"></th:block>
+
+
+<body class="  ">
+<div id="loading">
+  <div id="loading-center">
+  </div>
+</div>
+<div class="wrapper">
+  <!--sidebar-->
+  <th:block th:insert="admin/layouts/homeAdmin/sidebar.html"></th:block>
+
+  <!--navbar-->
+  <th:block th:insert="admin/layouts/homeAdmin/navbar.html"></th:block>
+  <div class="content-page">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="form-container">
+                <div class="form-fields">
+                  <div class="needs-validation">
+                    <div class="form-group">
+                      <label>Tên Người đặt</label>
+                      <input type="text" class="form-control" th:value="${order.getUser().userName}">
+                    </div>
+                    <div class="form-group">
+                      <label>Ngày Đặt</label>
+                      <input type="text" class="form-control" th:value="${order.getOrderDate()}">
+                    </div>
+                    <div class="form-group">
+                      <label>Tổng tiền</label>
+                      <input type="text" class="form-control" th:value="${(#numbers.formatCurrency(order.totalPrice))    }">
+                    </div>
+                    <div class="form-group">
+                      <label>Địa Chỉ</label>
+                      <input type="text" class="form-control" th:value="${order.address}">
+                    </div>
+                    <div class="form-group">
+                      <label>Phone</label>
+                      <input type="text" class="form-control" th:value="${order.phone}">
+                    </div>
+                    <div class="form-group">
+                      <label>Trạng thái</label>
+                      <span class="label"
+                            th:classappend="${order.orderStatus == 0 ? 'text-info bg-info-subtle' : (order.orderStatus == 1 ? 'text-primary bg-primary-subtle' : 'text-danger bg-danger-subtle')}"
+                            th:text="${order.orderStatus == 0 ? 'Pending' : (order.orderStatus == 1 ? 'Confirmed' : 'Cancel')}"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Wrapper End-->
+<!--footer-->
+<th:block th:insert="admin/layouts/homeAdmin/footer.html"></th:block>
+
+<!--Script-->
+<th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
+
+</body>
+
+</html>

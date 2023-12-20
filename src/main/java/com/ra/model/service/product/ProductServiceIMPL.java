@@ -24,4 +24,9 @@ public class ProductServiceIMPL implements ProductService{
     public boolean saveOrUpdate(Product product) {
         return productDAO.saveOrUpdate(product);
     }
+
+    @Override
+    public List<Product> findByIdCategory(Integer categoryId) {
+        return productDAO.findByIdCategory(categoryId);
+    }
 }

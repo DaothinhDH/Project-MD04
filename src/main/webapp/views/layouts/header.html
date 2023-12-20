@@ -8,141 +8,55 @@
         <nav class="main-nav">
           <ul class="menu menu-active-underline">
             <li class="active">
-              <a th:href="@{/demo6.html}">Home</a>
+              <a th:href="@{/demo6.html}"></a>
             </li>
-
+<!--SDSD-->
             <li>
-              <a th:href="@{/element.html}">Elements</a>
+              <a th:href="@{/}">SHOP</a>
               <div class="megamenu">
                 <div class="row">
                   <div class="col-md-3">
-                    <h4 class="menu-title">Elements 1</h4>
-                    <ul>
-                      <li><a th:href="@{/element-accordions.html}">Accordions</a></li>
-                      <li><a th:href="@{/element-alerts.html}">Alert &amp; Notification</a></li>
-                      <li><a th:href="@{/element-banner-effect.html}">Banner Effect
-                      </a></li>
-                      <li><a th:href="@{/element-banner.html}">Banner
-                      </a></li>
-                      <li><a th:href="@{/element-blog-posts.html}">Blog Posts</a></li>
-                      <li><a th:href="@{/element-breadcrumb.html}">Breadcrumb
-                      </a></li>
-                      <li><a th:href="@{/element-buttons.html}">Buttons</a></li>
-                      <li><a th:href="@{/element-cta.html}">Call to Action</a></li>
-                      <li><a th:href="@{/element-countdown.html}">Countdown
-                      </a></li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <h4 class="menu-title">Elements 2</h4>
-                    <ul>
-                      <li><a th:href="@{/element-counter.html}">Counter </a></li>
-                      <li><a th:href="@{/element-creative-grid.html}">Creative Grid
-                      </a></li>
-                      <li><a th:href="@{/element-animation.html}">Entrance Effect
-                      </a></li>
-                      <li><a th:href="@{/element-floating.html}">Floating
-                      </a></li>
-                      <li><a th:href="@{/element-hotspot.html}">Hotspot
-                      </a></li>
-                      <li><a th:href="@{/element-icon-boxes.html}">Icon Boxes</a></li>
-                      <li><a th:href="@{/element-icons.html}">Icons</a></li>
-                      <li><a th:href="@{/element-image-box.html}">Image box
-                      </a></li>
-                      <li><a th:href="@{/element-instagrams.html}">Instagrams</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <h4 class="menu-title">Elements 3</h4>
-                    <ul>
-                      <li><a th:href="@{/element-categories.html}">Product Category</a></li>
-                      <li><a th:href="@{/element-products.html}">Products</a></li>
-                      <li><a th:href="@{/element-product-banner.html}">Products + Banner
-                      </a></li>
-                      <li><a th:href="@{/element-product-grid.html}">Products + Grid
-                      </a></li>
-                      <li><a th:href="@{/element-product-single.html}">Product Single
-                      </a>
-                      </li>
-                      <li><a th:href="@{/element-product-tab.html}">Products + Tab
-                      </a></li>
-                      <li><a th:href="@{/element-single-product.html}">Single Product
-                      </a></li>
-                      <li><a th:href="@{/element-slider.html}">Slider
-                      </a></li>
-                      <li><a th:href="@{/element-social-link.html}">Social Icons </a></li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <h4 class="menu-title">Elements 4</h4>
-                    <ul>
-                      <li><a th:href="@{/element-subcategory.html}">Subcategory
-                      </a></li>
-                      <li><a th:href="@{/element-svg-floating.html}">Svg Floating
-                      </a></li>
-                      <li><a th:href="@{/element-tabs.html}">Tabs</a></li>
-                      <li><a th:href="@{/element-testimonials.html}">Testimonials
-                      </a></li>
-                      <li><a th:href="@{/element-titles.html}">Title</a></li>
-                      <li><a th:href="@{/element-typography.html}">Typography</a></li>
-                      <li><a th:href="@{/element-vendor.html}">Vendor
-                      </a></li>
-                      <li><a th:href="@{/element-video.html}">Video
-                      </a></li>
+                    <h4 class="menu-title">shops</h4>
+                    <ul th:each="item:${session.category}">
+                      <li><a th:href="@{/product{id}(id=${item.categoryId})}" th:text="${item.categoryName}"></a></li>
                     </ul>
                   </div>
                 </div>
               </div>
             </li>
-
+<!--SDSD-->
             <li>
               <a th:href="@{/#}">Pages</a>
               <ul>
                 <li><a th:href="@{/about-us.html}">About</a></li>
                 <li><a th:href="@{/contact-us.html}">Contact Us</a></li>
-                <li><a th:href="@{/account.html}">My Account</a></li>
-                <li><a th:href="@{/wishlist.html}">Wishlist</a></li>
-                <li><a th:href="@{/faq.html}">FAQs</a></li>
-                <li><a th:href="@{/error-404.html}">Error 404</a>
                   <ul>
                     <li><a th:href="@{/error-404.html}">Error 404-1</a></li>
-                    <li><a th:href="@{/error-404-1.html}">Error 404-2</a></li>
-                    <li><a th:href="@{/error-404-2.html}">Error 404-3</a></li>
-                    <li><a th:href="@{/error-404-3.html}">Error 404-4</a></li>
+
                   </ul>
                 </li>
                 <li><a th:href="@{/coming-soon.html}">Coming Soon</a></li>
               </ul>
             </li>
-
+<!--sdsd-->
             <li>
               <a th:href="@{/blog-classic.html}">Blog</a>
               <ul>
-                <li><a th:href="@{/blog-classic.html}">Classic</a></li>
-                <li><a th:href="@{/blog-listing.html}">Listing</a></li>
                 <li>
-                  <a th:href="@{/#}">Grid</a>
                   <ul>
-                    <li><a th:href="@{/blog-grid-2col.html}">Grid 2 columns</a></li>
-                    <li><a th:href="@{/blog-grid-3col.html}">Grid 3 columns</a></li>
-                    <li><a th:href="@{/blog-grid-4col.html}">Grid 4 columns</a></li>
-                    <li><a th:href="@{/blog-grid-sidebar.html}">Grid sidebar</a></li>
                   </ul>
                 </li>
                 <li>
                   <a th:href="@{/#}">Masonry</a>
                   <ul>
                     <li><a th:href="@{/blog-masonry-2col.html}">Masonry 2 columns</a></li>
-                    <li><a th:href="@{/blog-masonry-3col.html}">Masonry 3 columns</a></li>
-                    <li><a th:href="@{/blog-masonry-4col.html}">Masonry 4 columns</a></li>
-                    <li><a th:href="@{/blog-masonry-sidebar.html}">Masonry sidebar</a></li>
+
                   </ul>
                 </li>
                 <li>
                   <a th:href="@{/#}">Mask</a>
                   <ul>
                     <li><a th:href="@{/blog-mask-grid.html}">Blog mask grid</a></li>
-                    <li><a th:href="@{/blog-mask-masonry.html}">Blog mask masonry</a></li>
                   </ul>
                 </li>
                 <li>
@@ -157,15 +71,15 @@
         </nav>
       </div>
       <div class="header-center">
-        <a th:href="@{/demo6.html}" class="logo">
-          <img src="images/demos/demo6/logo.png" alt="logo" width="153" height="44" />
+        <a th:href="@{/}"  class="logo">
+          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTI1LjYgNzAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEyNS42IDcwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6IzM4MzYzODt9Cgkuc3Qxe2ZpbGw6I0YwQzUxQjt9Cjwvc3R5bGU+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01LDY2LjZMMC43LDU0LjVoMi4xTDYsNjQuNEg2bDMuMS05LjloMkw3LDY2LjZINXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTE0LjQsNjIuM2MwLDEuOCwxLjEsMi45LDIuOSwyLjljMS43LDAsMi45LTEuMSwyLjktMi45di03LjhoMS44djcuOWMwLDIuNy0xLjksNC40LTQuNyw0LjQKCWMtMi44LDAtNC43LTEuOC00LjctNC41di03LjloMS44VjYyLjN6Ii8+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0yMy40LDY2LjZsNC4yLTEyLjFoMmw0LjIsMTIuMWgtMmwtMS4xLTMuNWgtNC4zbC0xLjEsMy41SDIzLjR6IE0yOC41LDU2LjVsLTEuNyw1LjJoMy41TDI4LjUsNTYuNUwyOC41LDU2LjV6CgkiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQ2LjYsNjYuNnYtNS40aC01Ljh2NS40SDM5VjU0LjVoMS44djUuMWg1Ljh2LTUuMWgxLjh2MTIuMUg0Ni42eiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNTAsNjYuNmw0LjItMTIuMWgybDQuMiwxMi4xaC0ybC0xLjEtMy41SDUzbC0xLjEsMy41SDUweiBNNTQuNyw1My4ybC0yLjYtMS44SDU0bDIuMiwxLjhINTQuN3ogTTU1LjEsNTYuNQoJbC0xLjcsNS4yaDMuNUw1NS4xLDU2LjVMNTUuMSw1Ni41eiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNjIsNjYuNlY1NC41aDEuN2w1LjgsOWgwLjF2LTloMS44djEyLjFoLTEuN2wtNS44LTloLTAuMXY5SDYyeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODEuMyw1OC4yYy0wLjItMS42LTEuNC0yLjQtMi44LTIuNGMtMS43LDAtMy4xLDEuMS0zLjEsMy45djEuNmMwLDIuNCwxLDMuOSwzLjEsMy45YzEuNywwLDIuOS0xLjEsMi45LTIuNXYtMQoJaC0yLjl2LTEuNWg0Ljd2Mi41YzAsMS43LTEuMiw0LjItNC42LDQuMmMtMy4zLDAtNC45LTIuMi00LjktNS41di0xLjZjMC0zLjQsMS45LTUuNCw1LTUuNGMyLjksMCw0LjQsMS45LDQuNiw0SDgxLjN6Ii8+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05Ni43LDY2LjZ2LTUuNGgtNS44djUuNGgtMS44VjU0LjVoMS44djUuMWg1Ljh2LTUuMWgxLjh2MTIuMUg5Ni43eiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTAxLjMsNjYuNlY1NC41aDEuOHYxMi4xSDEwMS4zeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTEzLjMsNjYuNmgtNy40VjU0LjVoNy40djEuNmgtNS42djMuNmg1LjN2MS41aC01LjNWNjVoNS42VjY2LjZ6IE0xMDkuNiw2OGMwLjYsMCwxLDAuNCwxLDFjMCwwLjYtMC40LDEtMSwxCgljLTAuNSwwLTEtMC40LTEtMUMxMDguNiw2OC40LDEwOSw2OCwxMDkuNiw2OHoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTExNy40LDYyLjNjMCwxLjgsMS4xLDIuOSwyLjksMi45YzEuNywwLDIuOS0xLjEsMi45LTIuOXYtNy44aDEuOHY3LjljMCwyLjctMS45LDQuNC00LjcsNC40CgljLTIuOCwwLTQuNy0xLjgtNC43LTQuNXYtNy45aDEuOFY2Mi4zeiIvPgo8cG9seWdvbiBjbGFzcz0ic3QwIiBwb2ludHM9IjEwNy41LDUzLjIgMTExLjUsNTMuMiAxMTEuNyw1MC45IDExMC40LDUyLjEgMTA5LjYsNTAuOSAxMDguNyw1Mi4xIDEwNy41LDUwLjkgIi8+CjxnPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTcwLjcsMTguMmwtNi45LDE4LjVjLTEuMi00LTIuNy04LjgtNC0xMi44Yy0yLjEtNi41LTEyLjMtNS44LTEyLjMtNS44czEuMSwyLjgsMi4yLDUuMWM0LjctMC4zLDYsMS45LDcuNiwxMQoJCWMxLjYsOS4xLDguOCw5LjksOC44LDkuOWwxMi4xLTI2SDcwLjd6Ii8+Cgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNjMsMTMuMmgwLjVoMTAuMWwzLjctOC41bDAsMGwtNSwyYzAsMCwwLDAuMSwwLDAuMWMwLjMsMS40LTAuOSwyLjgtMi42LDMuMWMtMS43LDAuMy0zLjMtMC42LTMuNS0yCgkJYy0wLjItMS4xLDAuNS0yLjIsMS43LTIuOGwtNC42LTVsMC0wLjFsMCwwLjFsLTQuNiw1YzEuMiwwLjYsMS45LDEuNywxLjcsMi44Yy0wLjMsMS40LTEuOCwyLjMtMy41LDJjLTEuNy0wLjMtMi45LTEuNy0yLjYtMy4xCgkJYzAsMCwwLTAuMSwwLTAuMWwtNS0ybDAsMGwzLjcsOC41SDYzeiIvPgo8L2c+Cjwvc3ZnPgo=  " alt="logo" width="153" height="44" />
         </a>
 
       </div>
       <div class="header-right">
         <div class="login-container">
           <a class="login" th:href="@{/login}" data-toggle="login-modal" title="login">
-            <i class="d-icon-user" th:unless="${session.user != null}"></i>
+            <span style="margin-right: 10px" th:unless="${session.user != null}">xin chào!</span>
           </a>
           <nav class="main-nav" th:if="${session.user != null}">
             <ul class="menu">
@@ -183,10 +97,8 @@
         <div class="dropdown cart-dropdown off-canvas">
           <a th:href="@{/#}" class="cart-toggle">
 <span class="cart-label d-lg-show">
-<span class="cart-name">My cart</span>
-<span class="cart-name-delimiter">/</span>
-<span class="cart-price">$0.00</span>
-<span class="cart-price">$0.00</span>
+<span class="cart-name ">My cart</span>
+
 </span>
             <span class="cart-count">(2<span> Items</span>)</span>
           </a>

@@ -5,13 +5,10 @@
 
 
 <body class="  ">
-<!-- loader Start -->
 <div id="loading">
     <div id="loading-center">
     </div>
 </div>
-<!-- loader END -->
-<!-- Wrapper Start -->
 <div class="wrapper">
     <!--sidebar-->
     <th:block th:insert="admin/layouts/homeAdmin/sidebar.html"></th:block>
@@ -24,29 +21,36 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form th:object="${category_add}" method="post" th:action="@{/admin/create-category}">
-                                <div class="form-group">
-                                    <label>Tên danh mục</label>
-                                    <input type="text" class="form-control"
-                                           th:field="*{categoryName}"
-                                           placeholder="Enter Name">
+                            <div class="form-container">
+                                <div class="form-fields">
+                                    <form th:object="${category_add}" method="post"
+                                          th:action="@{/admin/create-category}" enctype="multipart/form-data"
+                                          class="needs-validation" novalidate>
+                                        <div class="form-group">
+                                            <label>Tên danh mục</label>
+                                            <input type="text" class="form-control"
+                                                   th:field="*{categoryName}"
+                                                   placeholder="Enter Name">
+                                        </div>
+                                        <div id="imagePreview"></div>
+                                        <div class="form-group">
+                                            <label>Mô tả</label>
+                                            <input type="text" class="form-control"
+                                                   th:field="*{description}"
+                                                   placeholder="description">
+                                        </div>
+                                        <div>
+                                            <label>Category Status :</label>
+                                            <input type="radio" th:field="*{categoryStatus}" value="1">
+                                            <span>Hiện</span>
+                                            <input type="radio" th:field="*{categoryStatus}" value="0">
+                                            <span>Ẩn</span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                    <a th:href="@{/admin/category}" class="btn btn-danger">Cancel</a>
                                 </div>
-                                <div class="form-group">
-                                    <label>Mô tả</label>
-                                    <input type="text" class="form-control"
-                                           th:field="*{description}"
-                                           placeholder="description">
-                                </div>
-                                <div>
-                                    <label>Category Status :</label>
-                                    <input type="radio" th:field="*{categoryStatus}" value="1">
-                                    <span>Hiện</span>
-                                    <input type="radio" th:field="*{categoryStatus}" value="0">
-                                    <span>Ẩn</span>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                            <a th:href="@{/admin/category}" class="btn btn-danger">Cancel</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,4 +66,5 @@
 <th:block th:insert="admin/layouts/homeAdmin/script.html"></th:block>
 
 </body>
+
 </html>

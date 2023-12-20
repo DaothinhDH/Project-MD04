@@ -19,20 +19,27 @@ public class LoginOrRegisterController {
     @Autowired
     UserServive userService;
     @GetMapping("/login")
-    public String login(Model model){
-        User user=new User();
-        model.addAttribute("user",user);
+    public String login(Model model, @RequestHeader("referer") String referer) {
+        session.setAttribute("previousUrl", referer);
+        User user = new User();
+        model.addAttribute("user", user);
         return "users/login/login";
     }
-    @PostMapping("/login")
-    public String handleLogin(@ModelAttribute("user") User user,Model model){
-        UserResponseDTO userResponseDTO = userService.checkLogin(user.getUserEmail(),user.getPassword());
 
-        if (userResponseDTO != null && userResponseDTO.isRole() == true) {
-            session.setAttribute("user",userResponseDTO);
+    @PostMapping("/login")
+    public String handleLogin(@ModelAttribute("user") User user) {
+        UserResponseDTO authent = userService.checkLogin(user.getUserEmail(), user.getPassword());
+
+        if (authent != null && authent.isRole() == true) {
+            session.setAttribute("user", authent);
+            String previousUrl = (String) session.getAttribute("previousUrl");
+            if (previousUrl != null) {
+                session.removeAttribute("previousUrl");
+                return "redirect:" + previousUrl;
+            }
             return "redirect:/";
         } else {
-            return "redirect:/";
+            return "redirect:/?error=true";
         }
     }
     @GetMapping("/logout")
@@ -73,5 +80,9 @@ public class LoginOrRegisterController {
         System.out.println(password);
         return "redirect:/login-admin";
     }
-
+    @GetMapping("/logout-admin")
+    public String logoutAdmin(){
+        session.removeAttribute("admin");
+        return "redirect:/login-admin";
+    }
 }
